@@ -5,8 +5,407 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hu.psprog.leaflet</groupId>
-    <artifactId>leaflet-stack-parent-bom</artifactId>
-    <version>1.0-r2104-dev</version>
+    <artifactId>leaflet-stack-base-bom</artifactId>
+    <version>1.0-r2110.1</version>
+    <packaging>pom</packaging>
 
-    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.5</version>
+    </parent>
+
+    <properties>
+
+        <!-- Java environment version -->
+        <java.version>11</java.version>
+
+        <!-- compiler settings -->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- maven settings -->
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm z</maven.build.timestamp.format>
+
+        <!-- Leaflet component versions -->
+        <leaflet.api.version>1.6.9</leaflet.api.version>
+        <leaflet.bridge.version>3.2.6</leaflet.bridge.version>
+        <leaflet.jwt.version>2.4.3</leaflet.jwt.version>
+        <leaflet.jwt-auth-support.version>1.0.4</leaflet.jwt-auth-support.version>
+        <leaflet.mail.version>1.2.5</leaflet.mail.version>
+        <leaflet.rcp.version>1.6.1</leaflet.rcp.version>
+        <leaflet.tlp-appender.version>1.1.3</leaflet.tlp-appender.version>
+        <leaflet.tlql.version>1.0.1</leaflet.tlql.version>
+        <leaflet.translation-adapter.version>2.1.4</leaflet.translation-adapter.version>
+
+        <!-- database drivers -->
+        <h2.version>1.4.200</h2.version>
+        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
+
+        <!-- other versions -->
+        <commonmark.version>0.18.0</commonmark.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <commons-lang.version>3.12.0</commons-lang.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <dropwizard-metrics-legacy.version>3.2.3</dropwizard-metrics-legacy.version>
+        <hystrix-javanica.version>1.5.18</hystrix-javanica.version>
+        <hystrix-servo-metrics-publisher.version>1.1.2</hystrix-servo-metrics-publisher.version>
+        <jackson.version>2.13.0</jackson.version>
+        <jakarta-mail.version>1.6.7</jakarta-mail.version>
+        <json-path.version>2.6.0</json-path.version>
+        <jwt-lib.version>0.9.1</jwt-lib.version>
+        <logback.version>1.2.6</logback.version>
+        <lombok.version>1.18.22</lombok.version>
+        <metrics-spring.version>3.1.3</metrics-spring.version>
+        <querydsl.version>4.4.0</querydsl.version>
+        <rxjava2.version>2.2.21</rxjava2.version>
+        <slf4j.version>1.7.32</slf4j.version>
+        <spark-java.version>2.9.3</spark-java.version>
+
+        <!-- Maven plugin versions -->
+        <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
+        <build-helper-maven-plugin.version>1.12</build-helper-maven-plugin.version>
+        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+
+        <!-- test framework versions -->
+        <wiremock.version>2.31.0</wiremock.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- leaflet internal dependencies -->
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>leaflet-rest-api</artifactId>
+                <version>${leaflet.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>bridge-api</artifactId>
+                <version>${leaflet.bridge.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>bridge-implementation</artifactId>
+                <version>${leaflet.bridge.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>bridge-spring-integration</artifactId>
+                <version>${leaflet.bridge.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>leaflet-jwt-component</artifactId>
+                <version>${leaflet.jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>jwt-auth-support-api</artifactId>
+                <version>${leaflet.jwt-auth-support.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>jwt-auth-handler</artifactId>
+                <version>${leaflet.jwt-auth-support.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>jwt-auth-front-end-support</artifactId>
+                <version>${leaflet.jwt-auth-support.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>leaflet-mailer-component</artifactId>
+                <version>${leaflet.mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>leaflet-tlql-processor</artifactId>
+                <version>${leaflet.tlql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>tlp-appender</artifactId>
+                <version>${leaflet.tlp-appender.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>leaflet-translation-adapter</artifactId>
+                <version>${leaflet.translation-adapter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>backend-rest-client</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>tms-rest-client</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>tms-rest-api</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>tlp-rest-client</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>tlp-rest-api</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>failover-rest-client</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>failover-rest-api</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>recaptcha-rest-client</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>recaptcha-rest-api</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>rcp-hystrix-support</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>rcp-request-adapters</artifactId>
+                <version>${leaflet.rcp.version}</version>
+            </dependency>
+
+            <!-- REST dependencies -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt-lib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-javanica</artifactId>
+                <version>${hystrix-javanica.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>jsr305</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjrt</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-servo-metrics-publisher</artifactId>
+                <version>${hystrix-servo-metrics-publisher.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>annotations</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- persistence -->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-mongodb</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+
+            <!-- database drivers -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+            <!-- logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <!-- metrics -->
+            <dependency>
+                <groupId>com.ryantenney.metrics</groupId>
+                <artifactId>metrics-spring</artifactId>
+                <version>${metrics-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-annotation</artifactId>
+                <version>${dropwizard-metrics-legacy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-core</artifactId>
+                <version>${dropwizard-metrics-legacy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-graphite</artifactId>
+                <version>${dropwizard-metrics-legacy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-healthchecks</artifactId>
+                <version>${dropwizard-metrics-legacy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-jvm</artifactId>
+                <version>${dropwizard-metrics-legacy.version}</version>
+            </dependency>
+
+            <!-- other dependencies -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>jakarta.mail</artifactId>
+                <version>${jakarta-mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.reactivex.rxjava2</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${rxjava2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.commonmark</groupId>
+                <artifactId>commonmark</artifactId>
+                <version>${commonmark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sparkjava</groupId>
+                <artifactId>spark-core</artifactId>
+                <version>${spark-java.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>javax.servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${commons-math3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${json-path.version}</version>
+            </dependency>
+
+            <!-- test dependencies -->
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock-jre8</artifactId>
+                <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
 </project>
