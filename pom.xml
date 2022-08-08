@@ -6,13 +6,13 @@
 
     <groupId>hu.psprog.leaflet</groupId>
     <artifactId>leaflet-stack-base-bom</artifactId>
-    <version>1.0-r2110.1</version>
+    <version>2.0-r2208.1</version>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.5</version>
+        <version>2.7.2</version>
     </parent>
 
     <properties>
@@ -30,55 +30,49 @@
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm z</maven.build.timestamp.format>
 
         <!-- Leaflet component versions -->
-        <leaflet.api.version>1.6.9</leaflet.api.version>
-        <leaflet.bridge.version>3.2.6</leaflet.bridge.version>
-        <leaflet.jwt.version>2.4.3</leaflet.jwt.version>
-        <leaflet.jwt-auth-support.version>1.0.4</leaflet.jwt-auth-support.version>
-        <leaflet.mail.version>1.2.5</leaflet.mail.version>
-        <leaflet.rcp.version>1.6.1</leaflet.rcp.version>
-        <leaflet.tlp-appender.version>1.1.3</leaflet.tlp-appender.version>
-        <leaflet.tlql.version>1.0.1</leaflet.tlql.version>
-        <leaflet.translation-adapter.version>2.1.4</leaflet.translation-adapter.version>
+        <leaflet.api.version>1.6.10</leaflet.api.version>
+        <leaflet.bridge.version>3.3.1</leaflet.bridge.version>
+        <leaflet.jwt.version>2.4.4</leaflet.jwt.version>
+        <leaflet.jwt-auth-support.version>1.0.5</leaflet.jwt-auth-support.version>
+        <leaflet.mail.version>1.2.6</leaflet.mail.version>
+        <leaflet.rcp.version>1.6.2</leaflet.rcp.version>
+        <leaflet.tlp-appender.version>1.1.4</leaflet.tlp-appender.version>
+        <leaflet.tlql.version>1.0.2</leaflet.tlql.version>
+        <leaflet.translation-adapter.version>2.1.5</leaflet.translation-adapter.version>
 
         <!-- database drivers -->
-        <h2.version>1.4.200</h2.version>
-        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
 
         <!-- other versions -->
-        <commonmark.version>0.18.0</commonmark.version>
+        <commonmark.version>0.19.0</commonmark.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <dropwizard-metrics-legacy.version>3.2.3</dropwizard-metrics-legacy.version>
+        <guava.version>31.1-jre</guava.version>
         <hystrix-javanica.version>1.5.18</hystrix-javanica.version>
-        <hystrix-servo-metrics-publisher.version>1.1.2</hystrix-servo-metrics-publisher.version>
-        <jackson.version>2.13.0</jackson.version>
+        <hystrix-servo-metrics-publisher.version>1.5.18</hystrix-servo-metrics-publisher.version>
+        <jackson.version>2.13.3</jackson.version>
         <jakarta-mail.version>1.6.7</jakarta-mail.version>
         <json-path.version>2.6.0</json-path.version>
         <jwt-lib.version>0.9.1</jwt-lib.version>
-        <logback.version>1.2.6</logback.version>
-        <lombok.version>1.18.22</lombok.version>
+        <logback.version>1.2.11</logback.version>
+        <lombok.version>1.18.24</lombok.version>
         <metrics-spring.version>3.1.3</metrics-spring.version>
-        <querydsl.version>4.4.0</querydsl.version>
         <rxjava2.version>2.2.21</rxjava2.version>
-        <slf4j.version>1.7.32</slf4j.version>
-        <spark-java.version>2.9.3</spark-java.version>
+        <slf4j.version>1.7.36</slf4j.version>
+        <spark-java.version>2.9.4</spark-java.version>
 
         <!-- Maven plugin versions -->
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
-        <build-helper-maven-plugin.version>1.12</build-helper-maven-plugin.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
-        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 
         <!-- test framework versions -->
-        <wiremock.version>2.31.0</wiremock.version>
+        <wiremock.version>2.33.2</wiremock.version>
 
     </properties>
 
@@ -262,6 +256,11 @@
                         <artifactId>annotations</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
 
             <!-- persistence -->
