@@ -6,7 +6,7 @@
 
     <groupId>hu.psprog.leaflet</groupId>
     <artifactId>leaflet-stack-base-bom</artifactId>
-    <version>2.0-r2208.1</version>
+    <version>2.0-r2208.2</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -35,6 +35,7 @@
         <leaflet.jwt.version>2.4.4</leaflet.jwt.version>
         <leaflet.jwt-auth-support.version>1.0.5</leaflet.jwt-auth-support.version>
         <leaflet.mail.version>1.2.6</leaflet.mail.version>
+        <leaflet.oauth-support.version>1.0.0</leaflet.oauth-support.version>
         <leaflet.rcp.version>1.6.2</leaflet.rcp.version>
         <leaflet.tlp-appender.version>1.1.4</leaflet.tlp-appender.version>
         <leaflet.tlql.version>1.0.2</leaflet.tlql.version>
@@ -99,6 +100,16 @@
                 <groupId>hu.psprog.leaflet</groupId>
                 <artifactId>bridge-spring-integration</artifactId>
                 <version>${leaflet.bridge.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>bridge-oauth-support</artifactId>
+                <version>${leaflet.bridge.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>hu.psprog.leaflet</groupId>
+                <artifactId>oauth-frontend-support</artifactId>
+                <version>${leaflet.oauth-support.version}</version>
             </dependency>
             <dependency>
                 <groupId>hu.psprog.leaflet</groupId>
