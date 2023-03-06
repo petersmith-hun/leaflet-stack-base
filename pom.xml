@@ -6,7 +6,7 @@
 
     <groupId>hu.psprog.leaflet</groupId>
     <artifactId>leaflet-stack-base-bom</artifactId>
-    <version>2.2-r2302.2</version>
+    <version>2.3-r2303.1</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -31,7 +31,7 @@
 
         <!-- Leaflet component versions -->
         <leaflet.api.version>2.0.0</leaflet.api.version>
-        <leaflet.bridge.version>3.4.1</leaflet.bridge.version>
+        <leaflet.bridge.version>3.4.2</leaflet.bridge.version>
         <leaflet.oauth-support.version>1.0.1</leaflet.oauth-support.version>
         <leaflet.rcp.version>1.11.0</leaflet.rcp.version>
         <leaflet.tlp-appender.version>1.1.5</leaflet.tlp-appender.version>
