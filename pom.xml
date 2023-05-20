@@ -6,19 +6,19 @@
 
     <groupId>hu.psprog.leaflet</groupId>
     <artifactId>leaflet-stack-base-bom</artifactId>
-    <version>2.4-r2304.1</version>
+    <version>3.0-r2305.1</version>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.8</version>
+        <version>3.1.0</version>
     </parent>
 
     <properties>
 
         <!-- Java environment version -->
-        <java.version>11</java.version>
+        <java.version>17</java.version>
 
         <!-- compiler settings -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -30,16 +30,13 @@
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm z</maven.build.timestamp.format>
 
         <!-- Leaflet component versions -->
-        <leaflet.api.version>2.1.1</leaflet.api.version>
-        <leaflet.bridge.version>3.4.2</leaflet.bridge.version>
-        <leaflet.oauth-support.version>1.0.1</leaflet.oauth-support.version>
-        <leaflet.rcp.version>1.12.2</leaflet.rcp.version>
-        <leaflet.tlp-appender.version>1.1.5</leaflet.tlp-appender.version>
-        <leaflet.tlql.version>1.0.3</leaflet.tlql.version>
-        <leaflet.translation-adapter.version>2.1.5</leaflet.translation-adapter.version>
-
-        <!-- database drivers -->
-        <mysql-connector-java.version>8.0.32</mysql-connector-java.version>
+        <leaflet.api.version>2.2.0</leaflet.api.version>
+        <leaflet.bridge.version>3.5.0</leaflet.bridge.version>
+        <leaflet.oauth-support.version>1.1.0</leaflet.oauth-support.version>
+        <leaflet.rcp.version>1.13.0</leaflet.rcp.version>
+        <leaflet.tlp-appender.version>1.2.0</leaflet.tlp-appender.version>
+        <leaflet.tlql.version>1.1.0</leaflet.tlql.version>
+        <leaflet.translation-adapter.version>2.2.0</leaflet.translation-adapter.version>
 
         <!-- other versions -->
         <commonmark.version>0.21.0</commonmark.version>
@@ -47,27 +44,14 @@
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <guava.version>31.1-jre</guava.version>
-        <hystrix-javanica.version>1.5.18</hystrix-javanica.version>
-        <hystrix-servo-metrics-publisher.version>1.5.18</hystrix-servo-metrics-publisher.version>
-        <jackson.version>2.14.2</jackson.version>
-        <jackson-bom.version>${jackson.version}</jackson-bom.version>
-        <jakarta-mail.version>1.6.7</jakarta-mail.version>
-        <json-path.version>2.7.0</json-path.version>
-        <jwt-lib.version>0.9.1</jwt-lib.version>
-        <logback.version>1.2.11</logback.version>
-        <lombok.version>1.18.26</lombok.version>
-        <metrics-spring.version>3.1.3</metrics-spring.version>
-        <rxjava2.version>2.2.21</rxjava2.version>
-        <slf4j.version>1.7.36</slf4j.version>
         <spark-java.version>2.9.4</spark-java.version>
 
         <!-- Maven plugin versions -->
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
-        <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
 
         <!-- test framework versions -->
         <wiremock.version>2.35.0</wiremock.version>
@@ -199,109 +183,6 @@
                 <version>${leaflet.rcp.version}</version>
             </dependency>
 
-            <!-- REST dependencies -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.dataformat</groupId>
-                <artifactId>jackson-dataformat-xml</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jsr310</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt</artifactId>
-                <version>${jwt-lib.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.netflix.hystrix</groupId>
-                <artifactId>hystrix-javanica</artifactId>
-                <version>${hystrix-javanica.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.google.code.findbugs</groupId>
-                        <artifactId>jsr305</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjrt</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.netflix.hystrix</groupId>
-                <artifactId>hystrix-servo-metrics-publisher</artifactId>
-                <version>${hystrix-servo-metrics-publisher.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.google.code.findbugs</groupId>
-                        <artifactId>annotations</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-
-            <!-- persistence -->
-            <dependency>
-                <groupId>com.querydsl</groupId>
-                <artifactId>querydsl-apt</artifactId>
-                <version>${querydsl.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.querydsl</groupId>
-                <artifactId>querydsl-mongodb</artifactId>
-                <version>${querydsl.version}</version>
-            </dependency>
-
-            <!-- database drivers -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql-connector-java.version}</version>
-            </dependency>
-
-            <!-- logging -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-
             <!-- other dependencies -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -317,27 +198,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>${h2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.mail</groupId>
-                <artifactId>jakarta.mail</artifactId>
-                <version>${jakarta-mail.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.reactivex.rxjava2</groupId>
-                <artifactId>rxjava</artifactId>
-                <version>${rxjava2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.commonmark</groupId>
@@ -360,16 +220,11 @@
                 <artifactId>commons-math3</artifactId>
                 <version>${commons-math3.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.jayway.jsonpath</groupId>
-                <artifactId>json-path</artifactId>
-                <version>${json-path.version}</version>
-            </dependency>
 
             <!-- test dependencies -->
             <dependency>
                 <groupId>com.github.tomakehurst</groupId>
-                <artifactId>wiremock-jre8</artifactId>
+                <artifactId>wiremock-jre8-standalone</artifactId>
                 <version>${wiremock.version}</version>
                 <scope>test</scope>
             </dependency>
