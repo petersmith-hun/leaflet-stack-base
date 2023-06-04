@@ -6,7 +6,7 @@
 
     <groupId>hu.psprog.leaflet</groupId>
     <artifactId>leaflet-stack-base-bom</artifactId>
-    <version>3.0-r2305.1</version>
+    <version>3.1-r2306.1</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -45,6 +45,7 @@
         <commons-lang.version>3.12.0</commons-lang.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <spark-java.version>2.9.4</spark-java.version>
+        <logstash-logback-encoder.version>7.3</logstash-logback-encoder.version>
 
         <!-- Maven plugin versions -->
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
@@ -219,6 +220,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-math3</artifactId>
                 <version>${commons-math3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
             </dependency>
 
             <!-- test dependencies -->
